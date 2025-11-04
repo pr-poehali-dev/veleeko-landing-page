@@ -4,6 +4,12 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import Icon from '@/components/ui/icon';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion';
 
 export default function Index() {
   const [formData, setFormData] = useState({
@@ -27,8 +33,9 @@ export default function Index() {
           </div>
           <nav className="hidden md:flex gap-8">
             <a href="#services" className="text-foreground hover:text-primary transition-colors">Услуги</a>
-            <a href="#advantages" className="text-foreground hover:text-primary transition-colors">Преимущества</a>
+            <a href="#about" className="text-foreground hover:text-primary transition-colors">О нас</a>
             <a href="#cases" className="text-foreground hover:text-primary transition-colors">Кейсы</a>
+            <a href="#faq" className="text-foreground hover:text-primary transition-colors">FAQ</a>
             <a href="#contact" className="text-foreground hover:text-primary transition-colors">Контакты</a>
           </nav>
           <Button className="hidden md:inline-flex bg-primary hover:bg-primary/90 text-white">
@@ -97,24 +104,41 @@ export default function Index() {
         </div>
       </section>
 
-      <section id="advantages" className="py-20 px-6">
+      <section id="about" className="py-20 px-6">
         <div className="container mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-16 text-foreground">Почему выбирают нас</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              { number: '17', label: 'лет опыта', icon: 'Award' },
-              { number: '500+', label: 'объектов', icon: 'Building' },
-              { number: '100%', label: 'гарантия', icon: 'ShieldCheck' },
-              { number: '24/7', label: 'поддержка', icon: 'Headphones' }
-            ].map((stat, idx) => (
-              <div key={idx} className="text-center space-y-4">
-                <div className="w-20 h-20 mx-auto rounded-2xl bg-primary/10 flex items-center justify-center mb-4">
-                  <Icon name={stat.icon} className="text-primary" size={40} />
-                </div>
-                <div className="text-5xl font-bold text-primary">{stat.number}</div>
-                <div className="text-muted-foreground text-lg">{stat.label}</div>
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div className="space-y-6">
+              <h2 className="text-4xl font-bold text-foreground mb-6">О компании</h2>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                ВелеЭко — лидер в области технологий очистки воды с 2008 года. Мы специализируемся на проектировании, производстве и внедрении комплексных систем водоподготовки для промышленных предприятий и объектов ЖКХ.
+              </p>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                Наша миссия — обеспечить доступ к чистой воде через передовые технологии и индивидуальный подход к каждому проекту. Мы работаем с ведущими производителями оборудования и следуем международным стандартам качества.
+              </p>
+              <div className="grid grid-cols-2 gap-6 pt-6">
+                {[
+                  { number: '17', label: 'лет опыта' },
+                  { number: '500+', label: 'объектов' },
+                  { number: '100%', label: 'гарантия' },
+                  { number: '24/7', label: 'поддержка' }
+                ].map((stat, idx) => (
+                  <div key={idx} className="text-center p-4 rounded-xl bg-primary/5">
+                    <div className="text-3xl font-bold text-primary mb-1">{stat.number}</div>
+                    <div className="text-sm text-muted-foreground">{stat.label}</div>
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
+            <div className="relative">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-3xl blur-3xl"></div>
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+                <img 
+                  src="https://cdn.poehali.dev/projects/18839ea2-ee88-4d2c-8e6c-a2c959e2f05c/files/2c2be171-4726-4b5a-934a-9c747049366c.jpg" 
+                  alt="Технологии ВелеЭко"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -158,6 +182,59 @@ export default function Index() {
               </Card>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section id="faq" className="py-20 px-6 bg-gradient-to-b from-white to-muted/30">
+        <div className="container mx-auto max-w-4xl">
+          <h2 className="text-4xl font-bold text-center mb-4 text-foreground">Часто задаваемые вопросы</h2>
+          <p className="text-center text-muted-foreground mb-12 text-lg">Ответы на популярные вопросы о наших услугах</p>
+          <Accordion type="single" collapsible className="space-y-4">
+            <AccordionItem value="item-1" className="border-2 border-border rounded-xl px-6 bg-white">
+              <AccordionTrigger className="text-lg font-semibold text-foreground hover:text-primary">
+                Какие гарантии вы предоставляете на оборудование?
+              </AccordionTrigger>
+              <AccordionContent className="text-muted-foreground">
+                Мы предоставляем полную гарантию на все установленное оборудование сроком от 2 до 5 лет в зависимости от типа системы. Также включено бесплатное сервисное обслуживание в течение первого года эксплуатации.
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="item-2" className="border-2 border-border rounded-xl px-6 bg-white">
+              <AccordionTrigger className="text-lg font-semibold text-foreground hover:text-primary">
+                Сколько времени занимает проектирование и монтаж системы?
+              </AccordionTrigger>
+              <AccordionContent className="text-muted-foreground">
+                Сроки зависят от масштаба проекта. Типовое решение для объекта ЖКХ занимает 2-3 недели, промышленные системы — от 1 до 3 месяцев. После выезда специалиста мы предоставим точный график работ.
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="item-3" className="border-2 border-border rounded-xl px-6 bg-white">
+              <AccordionTrigger className="text-lg font-semibold text-foreground hover:text-primary">
+                Проводите ли вы анализ воды перед установкой системы?
+              </AccordionTrigger>
+              <AccordionContent className="text-muted-foreground">
+                Да, бесплатный анализ воды входит в стоимость проектирования. Наши специалисты проведут полный химический и бактериологический анализ, чтобы подобрать оптимальную систему очистки под ваши нужды.
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="item-4" className="border-2 border-border rounded-xl px-6 bg-white">
+              <AccordionTrigger className="text-lg font-semibold text-foreground hover:text-primary">
+                Какое обслуживание требуется после установки?
+              </AccordionTrigger>
+              <AccordionContent className="text-muted-foreground">
+                Рекомендуется плановое техническое обслуживание раз в 6 месяцев. Мы предлагаем договоры на сервисное обслуживание с выездом специалистов, заменой фильтров и контролем параметров воды. Также доступна круглосуточная техподдержка.
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="item-5" className="border-2 border-border rounded-xl px-6 bg-white">
+              <AccordionTrigger className="text-lg font-semibold text-foreground hover:text-primary">
+                Работаете ли вы с государственными заказчиками?
+              </AccordionTrigger>
+              <AccordionContent className="text-muted-foreground">
+                Да, у нас большой опыт работы по 44-ФЗ и 223-ФЗ. Мы работаем с муниципальными предприятиями ЖКХ, школами, больницами и другими государственными учреждениями. Предоставляем полный пакет документов для тендеров.
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
         </div>
       </section>
 
