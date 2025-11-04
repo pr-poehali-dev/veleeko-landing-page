@@ -10,6 +10,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion';
+import ParallaxElements from '@/components/ParallaxElements';
 
 export default function Index() {
   const [formData, setFormData] = useState({
@@ -24,7 +25,8 @@ export default function Index() {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white relative">
+      <ParallaxElements />
       <header className="fixed top-0 w-full bg-white/95 backdrop-blur-sm border-b border-border z-50">
         <div className="container mx-auto px-6 py-4 flex justify-between items-center">
           <div className="flex items-center gap-2">
@@ -44,10 +46,10 @@ export default function Index() {
         </div>
       </header>
 
-      <section className="pt-32 pb-20 px-6">
+      <section className="pt-32 pb-20 px-6 relative z-10">
         <div className="container mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-8 animate-fade-in">
+            <div className="space-y-8 animate-slide-in-left">
               <div className="corner-accent inline-block p-8">
                 <h1 className="text-5xl lg:text-6xl font-bold text-foreground leading-tight">
                   Технологии очистки воды
@@ -65,7 +67,7 @@ export default function Index() {
                 </Button>
               </div>
             </div>
-            <div className="relative animate-slide-up">
+            <div className="relative animate-slide-in-right animation-delay-200">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-3xl blur-3xl"></div>
               <div className="relative rounded-3xl overflow-hidden shadow-2xl">
                 <img 
@@ -79,7 +81,7 @@ export default function Index() {
         </div>
       </section>
 
-      <section id="services" className="py-20 px-6 bg-gradient-to-b from-white to-muted/30">
+      <section id="services" className="py-20 px-6 bg-gradient-to-b from-white to-muted/30 relative z-10">
         <div className="container mx-auto">
           <h2 className="text-4xl font-bold text-center mb-4 text-foreground">Наши решения</h2>
           <p className="text-center text-muted-foreground mb-16 text-lg">Индивидуальный подход к каждой задаче</p>
@@ -90,7 +92,7 @@ export default function Index() {
               { icon: 'Wrench', title: 'Сервис и монтаж', desc: 'Установка и обслуживание' },
               { icon: 'FlaskConical', title: 'Анализ воды', desc: 'Лабораторные исследования' }
             ].map((service, idx) => (
-              <Card key={idx} className="hover-scale border-2 hover:border-primary/50 transition-all duration-300">
+              <Card key={idx} className="hover-lift hover-glow border-2 hover:border-primary/50 transition-all duration-300 animate-scale-in opacity-0" style={{ animationDelay: `${idx * 0.1}s` }}>
                 <CardContent className="p-6 space-y-4">
                   <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center">
                     <Icon name={service.icon} className="text-primary" size={32} />
@@ -104,10 +106,10 @@ export default function Index() {
         </div>
       </section>
 
-      <section id="about" className="py-20 px-6">
+      <section id="about" className="py-20 px-6 relative z-10">
         <div className="container mx-auto">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div className="space-y-6">
+            <div className="space-y-6 animate-slide-in-left">
               <h2 className="text-4xl font-bold text-foreground mb-6">О компании</h2>
               <p className="text-lg text-muted-foreground leading-relaxed">
                 ВелеЭко — лидер в области технологий очистки воды с 2008 года. Мы специализируемся на проектировании, производстве и внедрении комплексных систем водоподготовки для промышленных предприятий и объектов ЖКХ.
@@ -129,7 +131,7 @@ export default function Index() {
                 ))}
               </div>
             </div>
-            <div className="relative">
+            <div className="relative animate-slide-in-right animation-delay-200">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-3xl blur-3xl"></div>
               <div className="relative rounded-3xl overflow-hidden shadow-2xl">
                 <img 
@@ -143,10 +145,10 @@ export default function Index() {
         </div>
       </section>
 
-      <section id="cases" className="py-20 px-6 bg-gradient-to-b from-white to-muted/30">
+      <section id="cases" className="py-20 px-6 bg-gradient-to-b from-white to-muted/30 relative z-10">
         <div className="container mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-4 text-foreground">Наши проекты</h2>
-          <p className="text-center text-muted-foreground mb-16 text-lg">Реализованные решения</p>
+          <h2 className="text-4xl font-bold text-center mb-4 text-foreground animate-fade-in">Наши проекты</h2>
+          <p className="text-center text-muted-foreground mb-16 text-lg animate-fade-in animation-delay-200">Реализованные решения</p>
           <div className="grid md:grid-cols-3 gap-8">
             {[
               { 
@@ -165,7 +167,7 @@ export default function Index() {
                 image: 'https://cdn.poehali.dev/projects/18839ea2-ee88-4d2c-8e6c-a2c959e2f05c/files/2c2be171-4726-4b5a-934a-9c747049366c.jpg'
               }
             ].map((project, idx) => (
-              <Card key={idx} className="overflow-hidden hover-scale border-2 hover:border-primary/50 transition-all duration-300">
+              <Card key={idx} className="overflow-hidden hover-lift hover-glow border-2 hover:border-primary/50 transition-all duration-300 animate-scale-in opacity-0" style={{ animationDelay: `${idx * 0.15 + 0.3}s` }}>
                 <div className="h-48 overflow-hidden">
                   <img 
                     src={project.image} 
@@ -185,12 +187,12 @@ export default function Index() {
         </div>
       </section>
 
-      <section id="faq" className="py-20 px-6 bg-gradient-to-b from-white to-muted/30">
+      <section id="faq" className="py-20 px-6 bg-gradient-to-b from-white to-muted/30 relative z-10">
         <div className="container mx-auto max-w-4xl">
-          <h2 className="text-4xl font-bold text-center mb-4 text-foreground">Часто задаваемые вопросы</h2>
-          <p className="text-center text-muted-foreground mb-12 text-lg">Ответы на популярные вопросы о наших услугах</p>
-          <Accordion type="single" collapsible className="space-y-4">
-            <AccordionItem value="item-1" className="border-2 border-border rounded-xl px-6 bg-white">
+          <h2 className="text-4xl font-bold text-center mb-4 text-foreground animate-fade-in">Часто задаваемые вопросы</h2>
+          <p className="text-center text-muted-foreground mb-12 text-lg animate-fade-in animation-delay-200">Ответы на популярные вопросы о наших услугах</p>
+          <Accordion type="single" collapsible className="space-y-4 animate-fade-in animation-delay-400">
+            <AccordionItem value="item-1" className="border-2 border-border rounded-xl px-6 bg-white hover-lift transition-all duration-300">
               <AccordionTrigger className="text-lg font-semibold text-foreground hover:text-primary">
                 Какие гарантии вы предоставляете на оборудование?
               </AccordionTrigger>
@@ -199,7 +201,7 @@ export default function Index() {
               </AccordionContent>
             </AccordionItem>
 
-            <AccordionItem value="item-2" className="border-2 border-border rounded-xl px-6 bg-white">
+            <AccordionItem value="item-2" className="border-2 border-border rounded-xl px-6 bg-white hover-lift transition-all duration-300">
               <AccordionTrigger className="text-lg font-semibold text-foreground hover:text-primary">
                 Сколько времени занимает проектирование и монтаж системы?
               </AccordionTrigger>
@@ -208,7 +210,7 @@ export default function Index() {
               </AccordionContent>
             </AccordionItem>
 
-            <AccordionItem value="item-3" className="border-2 border-border rounded-xl px-6 bg-white">
+            <AccordionItem value="item-3" className="border-2 border-border rounded-xl px-6 bg-white hover-lift transition-all duration-300">
               <AccordionTrigger className="text-lg font-semibold text-foreground hover:text-primary">
                 Проводите ли вы анализ воды перед установкой системы?
               </AccordionTrigger>
@@ -217,7 +219,7 @@ export default function Index() {
               </AccordionContent>
             </AccordionItem>
 
-            <AccordionItem value="item-4" className="border-2 border-border rounded-xl px-6 bg-white">
+            <AccordionItem value="item-4" className="border-2 border-border rounded-xl px-6 bg-white hover-lift transition-all duration-300">
               <AccordionTrigger className="text-lg font-semibold text-foreground hover:text-primary">
                 Какое обслуживание требуется после установки?
               </AccordionTrigger>
@@ -226,7 +228,7 @@ export default function Index() {
               </AccordionContent>
             </AccordionItem>
 
-            <AccordionItem value="item-5" className="border-2 border-border rounded-xl px-6 bg-white">
+            <AccordionItem value="item-5" className="border-2 border-border rounded-xl px-6 bg-white hover-lift transition-all duration-300">
               <AccordionTrigger className="text-lg font-semibold text-foreground hover:text-primary">
                 Работаете ли вы с государственными заказчиками?
               </AccordionTrigger>
@@ -238,11 +240,11 @@ export default function Index() {
         </div>
       </section>
 
-      <section id="contact" className="py-20 px-6 bg-gradient-to-b from-muted/30 to-white">
+      <section id="contact" className="py-20 px-6 bg-gradient-to-b from-muted/30 to-white relative z-10">
         <div className="container mx-auto max-w-4xl">
-          <h2 className="text-4xl font-bold text-center mb-4 text-foreground">Получить консультацию</h2>
-          <p className="text-center text-muted-foreground mb-12 text-lg">Оставьте заявку, и мы свяжемся с вами в течение часа</p>
-          <Card className="corner-accent p-8 border-2">
+          <h2 className="text-4xl font-bold text-center mb-4 text-foreground animate-fade-in">Получить консультацию</h2>
+          <p className="text-center text-muted-foreground mb-12 text-lg animate-fade-in animation-delay-200">Оставьте заявку, и мы свяжемся с вами в течение часа</p>
+          <Card className="corner-accent p-8 border-2 hover-glow animate-scale-in animation-delay-400">
             <CardContent className="p-6">
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
@@ -272,7 +274,7 @@ export default function Index() {
                     className="border-2 min-h-32"
                   />
                 </div>
-                <Button type="submit" size="lg" className="w-full bg-primary hover:bg-primary/90 text-white text-lg">
+                <Button type="submit" size="lg" className="w-full bg-primary hover:bg-primary/90 text-white text-lg hover-lift">
                   Отправить заявку
                 </Button>
               </form>
@@ -281,7 +283,7 @@ export default function Index() {
         </div>
       </section>
 
-      <footer className="bg-accent text-white py-12 px-6">
+      <footer className="bg-accent text-white py-12 px-6 relative z-10">
         <div className="container mx-auto">
           <div className="grid md:grid-cols-4 gap-8 mb-8">
             <div>
