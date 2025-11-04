@@ -238,33 +238,7 @@ export default function Index() {
         </div>
       </section>
 
-      <section className="py-20 px-6 bg-accent text-white">
-        <div className="container mx-auto">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-4xl font-bold mb-6">Сертификаты и партнёры</h2>
-              <p className="text-xl mb-8 text-white/90">
-                Мы работаем по всем стандартам качества и сотрудничаем с ведущими производителями оборудования
-              </p>
-              <div className="grid grid-cols-2 gap-4">
-                {['ISO 9001', 'ISO 14001', 'ГОСТ Р', 'Росстандарт'].map((cert, idx) => (
-                  <div key={idx} className="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center">
-                    <Icon name="BadgeCheck" className="text-white mx-auto mb-2" size={32} />
-                    <div className="font-semibold">{cert}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div className="relative">
-              <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-12 flex items-center justify-center">
-                <Icon name="Award" className="text-white opacity-20" size={300} />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="contact" className="py-20 px-6">
+      <section id="contact" className="py-20 px-6 bg-gradient-to-b from-muted/30 to-white">
         <div className="container mx-auto max-w-4xl">
           <h2 className="text-4xl font-bold text-center mb-4 text-foreground">Получить консультацию</h2>
           <p className="text-center text-muted-foreground mb-12 text-lg">Оставьте заявку, и мы свяжемся с вами в течение часа</p>
