@@ -60,8 +60,12 @@ export default function Index() {
             </div>
             <div className="relative animate-slide-up">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-3xl blur-3xl"></div>
-              <div className="relative bg-gradient-to-br from-primary/10 to-secondary/10 rounded-3xl p-12 flex items-center justify-center">
-                <Icon name="Droplets" className="text-primary opacity-20" size={400} />
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+                <img 
+                  src="https://cdn.poehali.dev/projects/18839ea2-ee88-4d2c-8e6c-a2c959e2f05c/files/5a974d92-aeab-42a5-84f4-9e539413ceee.jpg" 
+                  alt="Современная система очистки воды"
+                  className="w-full h-full object-cover"
+                />
               </div>
             </div>
           </div>
@@ -121,13 +125,29 @@ export default function Index() {
           <p className="text-center text-muted-foreground mb-16 text-lg">Реализованные решения</p>
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { title: 'Водоочистка ЖК "Новый город"', category: 'ЖКХ', icon: 'Building2' },
-              { title: 'Промышленная станция "ПромТех"', category: 'Промышленность', icon: 'Factory' },
-              { title: 'Система фильтрации "Эко-Завод"', category: 'Производство', icon: 'Wrench' }
+              { 
+                title: 'Водоочистка ЖК "Новый город"', 
+                category: 'ЖКХ', 
+                image: 'https://cdn.poehali.dev/projects/18839ea2-ee88-4d2c-8e6c-a2c959e2f05c/files/2eb3c51e-5a18-46a4-b1b8-44667419e6c9.jpg'
+              },
+              { 
+                title: 'Промышленная станция "ПромТех"', 
+                category: 'Промышленность', 
+                image: 'https://cdn.poehali.dev/projects/18839ea2-ee88-4d2c-8e6c-a2c959e2f05c/files/5a974d92-aeab-42a5-84f4-9e539413ceee.jpg'
+              },
+              { 
+                title: 'Система фильтрации "Эко-Завод"', 
+                category: 'Производство', 
+                image: 'https://cdn.poehali.dev/projects/18839ea2-ee88-4d2c-8e6c-a2c959e2f05c/files/2c2be171-4726-4b5a-934a-9c747049366c.jpg'
+              }
             ].map((project, idx) => (
               <Card key={idx} className="overflow-hidden hover-scale border-2 hover:border-primary/50 transition-all duration-300">
-                <div className="h-48 bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
-                  <Icon name={project.icon} className="text-primary opacity-40" size={80} />
+                <div className="h-48 overflow-hidden">
+                  <img 
+                    src={project.image} 
+                    alt={project.title}
+                    className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+                  />
                 </div>
                 <CardContent className="p-6">
                   <div className="inline-block px-3 py-1 bg-primary/10 text-primary text-sm rounded-full mb-3">
